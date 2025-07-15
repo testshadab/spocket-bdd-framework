@@ -4,7 +4,7 @@ import path from 'path';
 export const cleanupDirectories = () => {
     // const directories = ['downlaodfile', 'jsonReport'];
     const directories = ['downloadfile'];
-    const files = ['urlData/conversation_urls.txt'];
+    // const files = ['urlData/conversation_urls.txt'];
     
     directories.forEach(dir => {
         const dirPath = path.join(process.cwd(), dir);
