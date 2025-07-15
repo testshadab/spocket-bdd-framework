@@ -1,3 +1,4 @@
+@SmokeTest
 Feature: Sample Order functionality
 
   Background:
