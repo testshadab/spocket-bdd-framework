@@ -2,9 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 export const cleanupDirectories = () => {
-    // const directories = ['downlaodfile', 'jsonReport'];
+    //  const directories = ['downlaodfile', 'jsonReport'];
     const directories = ['downloadfile'];
-    // const files = ['urlData/conversation_urls.txt'];
+    //  const files = ['urlData/conversation_urls.txt'];
     
     directories.forEach(dir => {
         const dirPath = path.join(process.cwd(), dir);
@@ -23,13 +23,13 @@ export const cleanupDirectories = () => {
             console.log(`Created ${dir} directory`);
         }
     });
-    files.forEach(file => {
-        const filePath = path.join(process.cwd(), file);
-        if (fs.existsSync(filePath)) {
-            fs.unlinkSync(filePath);
-            console.log(`Deleted file: ${filePath}`);
-        } else {
-            console.log(`File not found: ${filePath}`);
-        }
-    });
+    // files.forEach(file => {
+    //     const filePath = path.join(process.cwd(), file);
+    //     if (fs.existsSync(filePath)) {
+    //         fs.unlinkSync(filePath);
+    //         console.log(`Deleted file: ${filePath}`);
+    //     } else {
+    //         console.log(`File not found: ${filePath}`);
+    //     }
+    // });
 };
