@@ -34,19 +34,7 @@ Before(async function () {
 // Cleanup after each scenario
 After(async function ({ result }) {
   try {
-    // Capture conversation URL if available
-    if (this.page) {
-      try {
-        const url = await this.page.url();
-        if (url && (url.includes('conversation') || url.includes('chatllm'))) {
-          this.conversationUrl = url;
-          console.log(`Captured conversation URL: ${url}`);
-        }
-      } catch (urlError) {
-        console.error('Failed to capture conversation URL:', urlError);
-      }
-    }
-    
+    // Capture conversation URL if available  
     // Handle failed scenarios
     if (result.status === 'FAILED') {
       console.log('='.repeat(50));
