@@ -8,26 +8,28 @@ When('the user navigates to the dropshiptool change password section', async fun
   await setChangePasswordPage.navigateToAccountSection();
 });
 
-When('changes the dropshiptool password from old_password to {string}', async function (newPassword) {
-  await setChangePasswordPage.changeThePassword(newPassword);
+When('changes the dropshiptool password from {string} to {string}', async function (oldPassword, newPassword) {
+  await setChangePasswordPage.changeThePassword(oldPassword, newPassword);
 });
 
-When('logs out of the application', async function () {
+When('logs out of the dropshiptool application', async function () {
   await setChangePasswordPage.logoutApplication();
 });
 
-When('logs in again using the {string} and {string}', async function (email, newPassword) {
+When('logs in again using the dropshiptool {string} and {string}', async function (email, newPassword) {
   await setChangePasswordPage.loginWithNewPassword(email, newPassword);
+  await setChangePasswordPage.verifySuccessAlert();
   await setChangePasswordPage.navigateToAccountSection();
 
 });
 
-When('changes the password back to the original one {string} and {string}', async function (email, oldPassword) {
+When('changes the password back to the dropshiptool original one {string} and {string}', async function (email, oldPassword) {
   await setChangePasswordPage.changeThePassword(oldPassword);
   await setChangePasswordPage.logoutApplication();
   await setChangePasswordPage.passwordWithOriginalOne(email, oldPassword);
+  await setChangePasswordPage.navigateToAccountSection();
 });
 
-Then('the user should be able to log in again using the original password', async function () {
+Then('the dropshiptool user should be able to log in again using the original password', async function () {
   await setChangePasswordPage.verifyTheLogoutButton();
 });

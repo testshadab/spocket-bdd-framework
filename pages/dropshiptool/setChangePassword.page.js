@@ -8,17 +8,18 @@ export class SetChangePasswordPage {
 
 
         this.logout = page.locator("a[title='Log out']");
+        this.passwordHeadingTxt = page.locator("//span[text()='Password']");
+        this.oldPasswordTxtField = page.locator("input[placeholder*='Please enter the old password']");
         this.newPasswordTxtField = page.locator("input[placeholder*='Please enter the new password']");
         this.repeatPasswordTxtField = page.locator("input[placeholder*='Please re-enter the new password']");
-        this.saveButton = page.locator("button[data-heap='account-update-password-cta-button']");
+        this.saveButton = page.locator("//div[text()='Save']//parent::button");
         this.successMsgAlert = page.locator("//span[text()='Your password was updated successfully']");
-        this.signout = page.locator("button[data-heap='account-signout-button']");
+        this.signout = page.locator("//div[text()='Sign Out']//parent::button");
         this.logoutOfSpocket = page.locator("button[title='Log out of Spocket']");
-        this.loginCTA = page.locator("button[data-cy='sign-up-button']");
-        this.email = page.locator("input[name='email']");
-        this.password = page.locator("input[name='password']");
-        this.spocketLogo = page.locator("a[data-heap='sidebar-desktop-logo-link']");
-
+        this.loginCTA = page.locator("button[type='submit']");
+        this.email = page.locator("input[type='email']");
+        this.password = page.locator("input[type='password']");
+        this.successAlert = page.locator("//div[@type='success']//following::div[text()='Login successful']");
 
     }
 
@@ -32,20 +33,21 @@ export class SetChangePasswordPage {
         await this.page.waitForTimeout(5000);
     }
 
-    async changeThePassword(pass) {
-        await this.newPasswordTxtField.waitFor({ state: 'visible' });
-        await this.newPasswordTxtField.fill(pass);
+    async changeThePassword(oldPass, Newpass) {
+        await this.page.waitForTimeout(5000);
+        await this.passwordHeadingTxt.waitFor({ state: 'visible' });
+        await this.oldPasswordTxtField.fill(oldPass);
+        await this.page.waitForTimeout(1000);
+        await this.newPasswordTxtField.fill(Newpass);
         await this.repeatPasswordTxtField.waitFor({ state: 'visible' });
-        await this.repeatPasswordTxtField.fill(pass);
+        await this.repeatPasswordTxtField.fill(Newpass);
         await this.saveButton.click();
+        await this.page.waitForTimeout(5000);
     }
 
     async logoutApplication() {
-        await this.page.waitForTimeout(10000);
         await this.signout.waitFor({ state: 'visible' });
         await this.signout.click();
-        await this.logoutOfSpocket.waitFor({ state: 'visible' });
-        await this.logoutOfSpocket.click();
         await this.loginCTA.waitFor({ state: 'visible' });
     }
 
@@ -53,8 +55,16 @@ export class SetChangePasswordPage {
         await this.email.fill(username);
         await this.password.fill(newPass);
         await this.loginCTA.click();
-        await this.spocketLogo.first().waitFor({ state: 'visible' });
     }
+
+    async verifySuccessAlert() {
+        await this.successAlert.waitFor({ state: 'visible' });
+        const alertText = await this.successAlert.textContent();
+        if (!alertText.includes('Login successful')) {
+            throw new Error(`Login success message not found! Actual: "${alertText}"`);
+        }
+    }
+
 
     async passwordWithOriginalOne(username, oldPass) {
         await this.email.fill(username);
@@ -63,9 +73,10 @@ export class SetChangePasswordPage {
     }
 
     async verifyTheLogoutButton() {
-        await this.page.waitForTimeout(5000);
-        await this.settingsButton.waitFor({ state: 'visible' });
-        await this.settingsButton.hover();
         await this.logout.waitFor({ state: 'visible' });
+        const isEnabled = await this.logout.isEnabled();
+        if (!isEnabled) {
+            throw new Error('Logout button is not enabled!');
+        }
     }
 }
