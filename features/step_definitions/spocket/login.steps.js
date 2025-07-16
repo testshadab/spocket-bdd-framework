@@ -19,6 +19,7 @@ When('I enter valid password {string}', async function (password) {
 
 When('I click the login button', async function () {
   await loginPage.clickLoginButton();
+  await this.page.waitForTimeout(5000);
 });
 
 Then('I should be logged in successfully', async function () {

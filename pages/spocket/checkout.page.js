@@ -60,6 +60,8 @@ export class CheckoutPage {
     await this.page.waitForTimeout(2000);
     await frame.fill("input[autocomplete='cc-csc']", String(cvcNum));
     await this.page.waitForTimeout(2000);
+    await frame.selectOption('#Field-countryInput', 'US');
+       await this.page.waitForTimeout(4000);
     await frame.fill("input[name='postalCode']", String(zipCode));
     await this.page.waitForTimeout(2000);
     await frame.fill("input[name='linkMobilePhone']", String(phoneNum));
