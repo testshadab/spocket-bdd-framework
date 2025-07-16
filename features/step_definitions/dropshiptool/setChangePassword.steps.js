@@ -23,8 +23,8 @@ When('logs in again using the dropshiptool {string} and {string}', async functio
 
 });
 
-When('changes the password back to the dropshiptool original one {string} and {string}', async function (email, oldPassword) {
-  await setChangePasswordPage.changeThePassword(oldPassword);
+When('changes the password back to the dropshiptool original one {string} and {string} and {string}', async function (email, oldPassword, newPassword) {
+  await setChangePasswordPage.changeThePasswordWithOldOne(oldPassword, newPassword);
   await setChangePasswordPage.logoutApplication();
   await setChangePasswordPage.passwordWithOriginalOne(email, oldPassword);
   await setChangePasswordPage.navigateToAccountSection();

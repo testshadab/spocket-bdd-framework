@@ -15,6 +15,7 @@ export class SetChangePasswordPage {
         this.saveButton = page.locator("//div[text()='Save']//parent::button");
         this.successMsgAlert = page.locator("//span[text()='Your password was updated successfully']");
         this.signout = page.locator("//div[text()='Sign Out']//parent::button");
+        this.signoutTxt = page.locator("//span[text()='Sign Out']");
         this.logoutOfSpocket = page.locator("button[title='Log out of Spocket']");
         this.loginCTA = page.locator("button[type='submit']");
         this.email = page.locator("input[type='email']");
@@ -41,6 +42,18 @@ export class SetChangePasswordPage {
         await this.newPasswordTxtField.fill(Newpass);
         await this.repeatPasswordTxtField.waitFor({ state: 'visible' });
         await this.repeatPasswordTxtField.fill(Newpass);
+        await this.saveButton.click();
+        await this.page.waitForTimeout(5000);
+    }
+
+    async changeThePasswordWithOldOne(oldPass, Newpass) {
+        await this.page.waitForTimeout(5000);
+        await this.passwordHeadingTxt.waitFor({ state: 'visible' });
+        await this.oldPasswordTxtField.fill(Newpass);
+        await this.page.waitForTimeout(1000);
+        await this.newPasswordTxtField.fill(oldPass);
+        await this.repeatPasswordTxtField.waitFor({ state: 'visible' });
+        await this.repeatPasswordTxtField.fill(oldPass);
         await this.saveButton.click();
         await this.page.waitForTimeout(5000);
     }
@@ -73,8 +86,9 @@ export class SetChangePasswordPage {
     }
 
     async verifyTheLogoutButton() {
-        await this.logout.waitFor({ state: 'visible' });
-        const isEnabled = await this.logout.isEnabled();
+        await this.signoutTxt.scrollIntoViewIfNeeded();
+        await this.signout.waitFor({ state: 'visible' });
+        const isEnabled = await this.signout.isEnabled();
         if (!isEnabled) {
             throw new Error('Logout button is not enabled!');
         }

@@ -12,7 +12,7 @@ Feature: Set or Change Password Functionality
     And changes the dropshiptool password from "<old_password>" to "<new_password>"
     And logs out of the dropshiptool application
     And logs in again using the dropshiptool "<email>" and "<new_password>"
-    And changes the password back to the dropshiptool original one "<email>" and "<old_password>"
+    And changes the password back to the dropshiptool original one "<email>" and "<old_password>" and "<new_password>"
     Then the dropshiptool user should be able to log in again using the original password
 
     Examples:
