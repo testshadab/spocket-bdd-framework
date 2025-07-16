@@ -32,7 +32,7 @@ export class SubscriptionPage {
             await this.higherPlanButton.click();
             await this.page.waitForTimeout(3000);
             await this.confirmUpgradeButton.click();
-            await this.page.waitForTimeout(5000);
+            await this.page.waitForTimeout(8000);
             if (await this.noContinueWithMonthly.isVisible()) {
                 await this.noContinueWithMonthly.click();
             } else {
@@ -42,7 +42,7 @@ export class SubscriptionPage {
             await this.lowerPlanButton.click();
             await this.page.waitForTimeout(3000);
             await this.confirmDowngradeButton.click();
-            await this.page.waitForTimeout(5000);
+            await this.page.waitForTimeout(8000);
             if (await this.noContinueWithMonthly.isVisible()) {
                 await this.noContinueWithMonthly.click();
             } else {
@@ -53,7 +53,7 @@ export class SubscriptionPage {
             await this.higherPlanButton.click();
             await this.page.waitForTimeout(3000);
             await this.confirmUpgradeButton.click();
-            await this.page.waitForTimeout(5000);
+            await this.page.waitForTimeout(8000);
             if (await this.noContinueWithMonthly.isVisible()) {
                 await this.noContinueWithMonthly.click();
             } else {
@@ -71,6 +71,7 @@ export class SubscriptionPage {
         // }
         // console.log('Upgrade success message validated:', msg);
         await this.navigateToSubscriptionSection();
+        await this.page.reload();
         const msg = (await this.upgradeCurrentPlan.textContent()).trim();
         console.log('Upgrade message:', msg);
         if (!msg.includes("Your current plan")) {
@@ -83,7 +84,7 @@ export class SubscriptionPage {
         await this.lowerPlanButton.click();
         await this.page.waitForTimeout(3000);
         await this.confirmDowngradeButton.click();
-        await this.page.waitForTimeout(5000);
+        await this.page.waitForTimeout(8000);
         if (await this.noContinueWithMonthly.isVisible()) {
             await this.noContinueWithMonthly.click();
         } else {
@@ -93,6 +94,7 @@ export class SubscriptionPage {
 
     async isDowngradeSuccess() {
         await this.navigateToSubscriptionSection();
+        await this.page.reload();
         const msg = (await this.downgradeCurrentPlan.textContent()).trim();
         console.log('Downgrade message:', msg);
         if (!msg.includes("Your current plan")) {

@@ -31,6 +31,7 @@ export class CheckoutPage {
   }
 
   async skipPopups() {
+    await this.page.waitForTimeout(5000);
     if (await this.skipButton.isVisible()) {
       await this.skipButton.click();
       await this.page.waitForTimeout(1000);

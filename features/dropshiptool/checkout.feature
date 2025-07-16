@@ -1,3 +1,4 @@
+@Dropshiptool
 Feature: Checkout test functionality
 
   Background:

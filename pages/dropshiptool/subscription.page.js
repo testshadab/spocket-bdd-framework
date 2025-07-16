@@ -28,6 +28,7 @@ export class SubscriptionPage {
     }
 
     async upgradePlan() {
+        await this.page.waitForTimeout(3000);
         if (await this.higherPlanButton.isVisible()) {
             await this.higherPlanButton.click();
             await this.page.waitForTimeout(3000);
@@ -39,6 +40,7 @@ export class SubscriptionPage {
                 console.log('No Continue With Monthly Plan Button not found, moving on...');
             }
         } else {
+            await this.page.waitForTimeout(3000);
             await this.lowerPlanButton.click();
             await this.page.waitForTimeout(3000);
             await this.downgradeToEmpireButton.click();
@@ -48,7 +50,7 @@ export class SubscriptionPage {
             } else {
                 console.log('No Continue With Monthly Plan Button not found, moving on...');
             }
-            this.isDowngradeSuccess();
+            await this.isDowngradeSuccess();
             await this.page.waitForTimeout(3000);
             await this.higherPlanButton.click();
             await this.page.waitForTimeout(3000);
@@ -71,6 +73,9 @@ export class SubscriptionPage {
         // }
         // console.log('Upgrade success message validated:', msg);
         await this.navigateToSubscriptionSection();
+        await this.page.waitForTimeout(4000);
+        await this.page.reload();
+        await this.page.waitForTimeout(4000);
         const msg = (await this.upgradeCurrentPlan.textContent()).trim();
         console.log('Upgrade message:', msg);
         if (!msg.includes("Current Plan")) {
@@ -80,6 +85,7 @@ export class SubscriptionPage {
     }
 
     async downgradePlan() {
+        await this.page.waitForTimeout(3000);
         await this.lowerPlanButton.click();
         await this.page.waitForTimeout(3000);
         await this.downgradeToEmpireButton.click();
@@ -93,6 +99,8 @@ export class SubscriptionPage {
 
     async isDowngradeSuccess() {
         await this.navigateToSubscriptionSection();
+        await this.page.waitForTimeout(4000);
+        await this.page.reload();
         const msg = (await this.downgradeCurrentPlan.textContent()).trim();
         console.log('Downgrade message:', msg);
         if (!msg.includes("Current Plan")) {

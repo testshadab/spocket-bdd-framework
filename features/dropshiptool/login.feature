@@ -1,3 +1,4 @@
+@Dropshiptool
 Feature: Login functionality
 
   Background:

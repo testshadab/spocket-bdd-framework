@@ -6,7 +6,7 @@
         "description": "",
         "id": "subscription-management;upgrade-and-downgrade-the-subscription-plan",
         "keyword": "Scenario",
-        "line": 10,
+        "line": 11,
         "name": "Upgrade and downgrade the subscription plan",
         "steps": [
           {
@@ -14,111 +14,124 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 443817099
+              "duration": 671308700
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 5,
-            "name": "Navigate to the dropshiptool application",
+            "name": "Navigate to the spocket application",
             "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\login.steps.js:6"
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\login.steps.js:6"
             },
             "result": {
               "status": "passed",
-              "duration": 2625742199
+              "duration": 23585773100
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 6,
-            "name": "Enter the dropshiptool \"test.shadab211@getnada.com\" and pass \"Test@1234\"",
+            "name": "I enter valid username \"test.shadab21@getnada.com\"",
             "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\login.steps.js:11"
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\login.steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 100403500
+              "duration": 102365499
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 7,
-            "name": "I click the dropshiptool login button",
+            "name": "I enter valid password \"Test@1234\"",
             "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\login.steps.js:16"
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\login.steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 78806100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 11,
-            "name": "dropshiptool user navigates to the subscription or pricing section",
-            "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\subscription.steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 10148019700
+              "duration": 74834499
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 12,
-            "name": "dropshiptool user selects a higher plan and confirms the upgrade",
+            "line": 8,
+            "name": "I click the login button",
             "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\subscription.steps.js:12"
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\login.steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 18307200400
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 13,
-            "name": "dropshiptool subscription should be successfully upgraded",
-            "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\subscription.steps.js:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 10133668999
+              "duration": 178467799
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 14,
-            "name": "dropshiptool user selects a lower plan and confirms the downgrade",
+            "line": 12,
+            "name": "the user navigates to the subscription or pricing section",
             "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\subscription.steps.js:20"
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\subscription.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 18287067999
+              "duration": 13204474099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "the user selects a higher plan and confirms the upgrade",
+            "match": {
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\subscription.steps.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11374689900
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 15,
-            "name": "dropshiptool subscription should be successfully downgraded",
+            "line": 14,
+            "name": "the subscription should be successfully upgraded",
             "match": {
-              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\dropshiptool\\subscription.steps.js:24"
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\subscription.steps.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 10143290500
+              "duration": 35489215799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "the user selects a lower plan and confirms the downgrade",
+            "match": {
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\subscription.steps.js:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11319684599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "the subscription should be successfully downgraded",
+            "match": {
+              "location": "file:\\D:\\Faizan_Laptop\\Shadab%20Aut\\S%20Playwright\\spocket-bdd-framework\\features\\step_definitions\\spocket\\subscription.steps.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35492218200
             }
           },
           {
@@ -126,7 +139,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 380569399
+              "duration": 704384399
             }
           }
         ],
@@ -136,8 +149,8 @@
             "line": 1
           },
           {
-            "name": "@DropshiptoolSubscriptionTest",
-            "line": 9
+            "name": "@SubscriptionTest",
+            "line": 10
           }
         ],
         "type": "scenario"
@@ -153,6 +166,6 @@
         "line": 1
       }
     ],
-    "uri": "features\\dropshiptool\\subscription.feature"
+    "uri": "features\\spocket\\subscription.feature"
   }
 ]

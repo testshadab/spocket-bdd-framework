@@ -1,3 +1,4 @@
+@Dropshiptool
 Feature: Subscription Management
 
   Background:
