@@ -84,7 +84,7 @@ export class SubscriptionPage {
         await this.lowerPlanButton.click();
         await this.page.waitForTimeout(3000);
         await this.confirmDowngradeButton.click();
-        await this.page.waitForTimeout(8000);
+        await this.page.waitForTimeout(10000);
         if (await this.noContinueWithMonthly.isVisible()) {
             await this.noContinueWithMonthly.click();
         } else {
