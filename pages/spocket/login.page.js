@@ -20,7 +20,6 @@ export class LoginPage {
 
   async enterUsername(username) {
     // await this.emailInput.waitFor({ state: 'clickable' , timeout: 10000 });
-    await this.page.waitForLoadState('load');
     await this.emailInput.fill(username);
   }
 

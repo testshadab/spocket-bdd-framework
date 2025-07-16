@@ -1,8 +1,8 @@
 import { Before, After, BeforeAll, AfterAll, setDefaultTimeout } from '@cucumber/cucumber';
 import fs from 'fs';
 import { cleanupDirectories } from '../../utils/cleanup.js';
-// Set default timeout to 50 minutes (30000000 milliseconds) for all steps
-setDefaultTimeout(30000000);
+// Set default timeout to 5 minutes (30000000 milliseconds) for all steps
+setDefaultTimeout(300000);
 
 // Ensure the reports directory exists
 BeforeAll(async function () {
@@ -23,8 +23,6 @@ BeforeAll(async function () {
 Before(async function () {
   try {
     await this.init();
-    // Initialize conversation URL storage
-    this.conversationUrl = null;
   } catch (error) {
     console.error('Error in Before hook:', error);
     throw error;
@@ -34,38 +32,11 @@ Before(async function () {
 // Cleanup after each scenario
 After(async function ({ result }) {
   try {
-    // Capture conversation URL if available  
     // Handle failed scenarios
     if (result.status === 'FAILED') {
       console.log('='.repeat(50));
       console.log('TEST FAILURE DETECTED');
       console.log('='.repeat(50));
-      
-      // Display conversation URL prominently in console
-      if (this.conversationUrl) {
-        console.log(`🔗 CONVERSATION URL: ${this.conversationUrl}`);
-        // Attach URL to the report with enhanced formatting
-        await this.attach(`
-=== FAILURE DETAILS ===
-Conversation URL: ${this.conversationUrl}
-Scenario: ${this.pickle?.name || 'Unknown'}
-Status: FAILED
-Timestamp: ${new Date().toISOString()}
-========================
-        `, 'text/plain');
-      } else {
-        console.log('⚠️  No conversation URL captured');
-        await this.attach(`
-=== FAILURE DETAILS ===
-Conversation URL: Not Available
-Scenario: ${this.pickle?.name || 'Unknown'}
-Status: FAILED
-Timestamp: ${new Date().toISOString()}
-Note: URL could not be captured
-========================
-        `, 'text/plain');
-      }
-      
       // Take screenshot if scenario fails
       if (this.page) {
         try {
@@ -79,14 +50,7 @@ Note: URL could not be captured
           console.error('Failed to take failure screenshot:', screenshotError);
         }
       }
-      
       console.log('='.repeat(50));
-    } else {
-      // For successful tests, still attach URL if available
-      if (this.conversationUrl) {
-        await this.attach(`Conversation URL: ${this.conversationUrl}`, 'text/plain');
-        console.log(`✅ Test passed - Conversation URL: ${this.conversationUrl}`);
-      }
     }
     
   } catch (error) {

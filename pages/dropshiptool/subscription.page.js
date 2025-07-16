@@ -23,7 +23,6 @@ export class SubscriptionPage {
         await this.settingsButton.waitFor({ state: 'visible' });
         await this.settingsButton.click();
         await this.page.waitForTimeout(5000);
-        // await this.page.waitForLoadState('load');
         await this.pricingPlanHeading.waitFor({ state: 'visible' });
     }
 

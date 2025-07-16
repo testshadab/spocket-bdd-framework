@@ -6,6 +6,7 @@ let loginPage;
 Given('Navigate to the dropshiptool application', async function () {
   loginPage = new LoginPage(this.page);
   await loginPage.navigate();
+ await this.page.waitForLoadState('load');
 });
 
 When('Enter the dropshiptool {string} and pass {string}', async function (username, password) {

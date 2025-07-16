@@ -32,12 +32,12 @@ export class ImportList {
   }
 
   async importItemList() {
-    await this.searchButton.waitFor({ state: 'visible' });
+    await this.searchButton.waitFor({ state: 'visible', timeout:'5000'});
     await this.removeImpItems();
     await this.spocketLogo.first().click();
     await this.techCategoryCard.scrollIntoViewIfNeeded();
     await this.techCategoryCard.click();
-    await this.firstItemOfList.waitFor({ state: 'visible' });
+    await this.firstItemOfList.waitFor({ state: 'visible',timeout:'5000' });
     await this.firstItemOfList.hover();
     if (await this.removeFromImpListButton.isVisible()) {
       await this.removeFromImpListButton.click();

@@ -21,9 +21,9 @@ class BrowserType extends World {
             video: true,
             console: true,
             tunnel: config.lambdaTest.tunnel,
-            timeout: 30000000,
-            idleTimeout: 30000000,
-            sessionTimeout: 30000000
+            timeout: 300000,
+            idleTimeout: 300000,
+            sessionTimeout: 300000
           },
         };
 
@@ -31,12 +31,12 @@ class BrowserType extends World {
           wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
             JSON.stringify(capabilities)
           )}`,
-          timeout: 30000000, // 50 minutes connection timeout
+          timeout: 300000  , // 5 minutes connection timeout
         });
 
         this.context = await this.browser.newContext({
           viewport: { width: 1900, height: 1000 },
-          timeout: 30000000, // 40 minutes context timeout
+          timeout: 300000, // 40 minutes context timeout
           acceptDownloads: true,
           downloadsPath: 'downloadfile',
         });
@@ -59,11 +59,11 @@ class BrowserType extends World {
 
       // Increase default navigation and page timeouts for LambdaTest
       if (config.executionMode === "lambda") {
-        await this.page.setDefaultNavigationTimeout(30000000); // 0 minutes
-        await this.page.setDefaultTimeout(30000000); // 50 minutes
+        await this.page.setDefaultNavigationTimeout(300000); // 0 minutes
+        await this.page.setDefaultTimeout(300000); // 50 minutes
       } else {
-        await this.page.setDefaultNavigationTimeout(30000000);
-        await this.page.setDefaultTimeout(30000000);
+        await this.page.setDefaultNavigationTimeout(300000);
+        await this.page.setDefaultTimeout(300000);
       }
     } catch (error) {
       console.error("Failed to initialize browser:", error);

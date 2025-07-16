@@ -28,17 +28,14 @@ export class SignUpPage {
   }
 
   async enterUsername(username) {
-    await this.page.waitForLoadState('load');
     await this.email.fill(username);
   }
 
   async enterPassword(password) {
-    await this.page.waitForLoadState('load');
     await this.password.fill(password);
   }
 
   async clickLoginButton() {
-    await this.page.waitForLoadState('load');
     await this.loginCTA.click();
   }
 
