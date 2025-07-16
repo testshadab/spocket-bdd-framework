@@ -8,6 +8,7 @@ When('the user enters {string}, {string}, {string} payment details', async funct
   checkoutPage = new CheckoutPage(this.page);
   await checkoutPage.shopifyPopups();
   await checkoutPage.skipPopups();
+  await this.page.waitForTimeout(5000);
   await checkoutPage.selectPayment(cardNumber, expirationDate, cvcCode);
 });
 

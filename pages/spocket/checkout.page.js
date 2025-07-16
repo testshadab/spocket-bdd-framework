@@ -41,7 +41,7 @@ export class CheckoutPage {
     if (retries === 0) return;
     if (await this.skipButton.isVisible()) {
       await this.skipButton.click();
-      await this.page.waitForTimeout(1000);
+      await this.page.waitForTimeout(4000);
       await this.skipPopups(retries - 1);
     } else {
       console.log('No more skip buttons found.');
@@ -50,11 +50,16 @@ export class CheckoutPage {
 
   async selectPayment(cardNum, expDate, cvcNum) {
     await this.paymentMethodHeading.waitFor({ state: 'visible' });
+      await this.page.waitForTimeout(6000);
     const frameHandle = await this.iframeSelector.elementHandle();
     const frame = await frameHandle.contentFrame();
+    await this.page.waitForTimeout(3000);
     await frame.fill("input[autocomplete='cc-number']", String(cardNum));
+    await this.page.waitForTimeout(5000);
     await frame.fill("input[autocomplete='cc-exp']", String(expDate));
+        await this.page.waitForTimeout(2000);
     await frame.fill("input[autocomplete='cc-csc']", String(cvcNum));
+        await this.page.waitForTimeout(5000);
     await this.claimYourTrialButton.click();
     await this.page.waitForTimeout(13000);
     await this.noContinueWithMonthly.click();
