@@ -48,20 +48,24 @@ export class CheckoutPage {
     }
   }
 
-  async selectPayment(cardNum, expDate, cvcNum) {
+  async selectPayment(cardNum, expDate, cvcNum, zipCode, phoneNum) {
     await this.paymentMethodHeading.waitFor({ state: 'visible' });
-      await this.page.waitForTimeout(6000);
+    await this.page.waitForTimeout(6000);
     const frameHandle = await this.iframeSelector.elementHandle();
     const frame = await frameHandle.contentFrame();
     await this.page.waitForTimeout(3000);
     await frame.fill("input[autocomplete='cc-number']", String(cardNum));
     await this.page.waitForTimeout(5000);
     await frame.fill("input[autocomplete='cc-exp']", String(expDate));
-        await this.page.waitForTimeout(2000);
+    await this.page.waitForTimeout(2000);
     await frame.fill("input[autocomplete='cc-csc']", String(cvcNum));
-        await this.page.waitForTimeout(5000);
+    await this.page.waitForTimeout(2000);
+    await frame.fill("input[name='postalCode']", String(zipCode));
+    await this.page.waitForTimeout(2000);
+    await frame.fill("input[name='linkMobilePhone']", String(phoneNum));
+    await this.page.waitForTimeout(5000);
     await this.claimYourTrialButton.click();
-    await this.page.waitForTimeout(13000);
+    await this.page.waitForTimeout(5000);
     await this.noContinueWithMonthly.click();
   }
 }
